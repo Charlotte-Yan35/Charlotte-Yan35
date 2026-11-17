@@ -58,6 +58,8 @@ THEMES = {
     ),
 }
 
+TAGLINE = "Life is constantly moving on."   # the yellow sticker under the name
+
 INK = LINE = ""
 C, T = {}, {}
 
@@ -120,9 +122,8 @@ def star(x, y, s, fill, dur=14, cls=""):
     k = s * 0.2
     d = f"M0,{-s} Q{k},{-k} {s},0 Q{k},{k} 0,{s} Q{-k},{k} {-s},0 Q{-k},{-k} 0,{-s} Z"
     return (
-        f'<g transform="translate({x},{y})"><g class="{cls}"><g>'
-        f'<animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="{dur}s" repeatCount="indefinite"/>'
-        f'<path d="{d}" fill="{fill}" stroke="{LINE}" stroke-width="2.6" stroke-linejoin="round"/></g></g></g>'
+        f'<g transform="translate({x},{y}) rotate({(x * 7 + y * 3) % 40 - 20})">'
+        f'<path d="{d}" fill="{fill}" stroke="{LINE}" stroke-width="2.6" stroke-linejoin="round"/></g>'
     )
 
 
@@ -132,9 +133,8 @@ def flower(x, y, petal, centre, dur=18):
         for a in [i * math.pi / 3 for i in range(6)]
     )
     return (
-        f'<g transform="translate({x},{y})"><g>'
-        f'<animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="{dur}s" repeatCount="indefinite"/>'
-        f'{petals}<circle r="10" fill="{centre}" stroke="{LINE}" stroke-width="2.6"/></g></g>'
+        f'<g transform="translate({x},{y}) rotate(12)">'
+        f'{petals}<circle r="10" fill="{centre}" stroke="{LINE}" stroke-width="2.6"/></g>'
     )
 
 
@@ -211,22 +211,18 @@ def label(x, y, text, fill, rot=-3, size=17):
 
 # ----------------------------------------------------------------------- hero
 def hero():
-    W, H = 1200, 470
+    W, H = 1200, 360
     cw, ch = W - 2 * PAD - SHADOW, H - 2 * PAD - SHADOW
-    strip_y = ch - 64
+    strip_y = ch - 56
 
-    name_lines = NAME.split(" ", 1)
-    fs = min(100 if len(name_lines) > 1 else 112, 500 / (0.6 * max(len(s) for s in name_lines)))
-    y1 = 98 + fs * 0.8
+    fs = min(96, 520 / (0.6 * len(NAME)))
+    nf, ns, nsh = T["name"]
     name = ""
-    for i, line in enumerate(name_lines):
-        y = y1 + i * fs * 0.98
-        nf, ns, nsh = T["name"]
-        if nsh:
-            blend = _shadow_attrs()[2]
-            name += f'<text x="71" y="{y + 8:.0f}" fill="{nsh}" stroke="{nsh if ns != "none" else "none"}"{blend}>{line}</text>'
-        soft = "" if nsh else ' filter="url(#soft)"'
-        name += f'<text x="63" y="{y:.0f}" fill="{nf}" stroke="{ns}"{soft}>{line}</text>'
+    if nsh:
+        blend = _shadow_attrs()[2]
+        name += f'<text x="71" y="166" fill="{nsh}" stroke="{nsh if ns != "none" else "none"}"{blend}>{NAME}</text>'
+    soft = "" if nsh else ' filter="url(#soft)"'
+    name += f'<text x="63" y="158" fill="{nf}" stroke="{ns}"{soft}>{NAME}</text>'
 
     sw_, sh_ = 330, 220
     bars = [(64, 150, INK), (64, 70, C["purple"]), (92, 240, INK), (120, 110, C["pink"]),
@@ -238,7 +234,7 @@ def hero():
         used[y] = used.get(y, 0) + w + 12
     sweep = 'keyTimes="0;0.12;0.62;1" dur="6.5s" repeatCount="indefinite"'
     screen = f"""
-    <g transform="translate(684,84) rotate(5)"><g class="bob">
+    <g transform="translate(704,30) rotate(5) scale(0.84)"><g class="bob">
       {srect(0, 0, sw_, sh_, 18, C['white'], sh=9)}
       <path d="M1.5,40 V18 a16.5,16.5 0 0 1 16.5,-16.5 H{sw_ - 18} a16.5,16.5 0 0 1 16.5,16.5 V40 Z" fill="{C['yellow']}"/>
       <path d="M0,40 H{sw_}" stroke="{LINE}" stroke-width="3"/>
@@ -266,20 +262,21 @@ def hero():
         f'<circle cx="{x:.1f}" cy="{y:.1f}" r="9.5" fill="{C[col]}" stroke="{LINE}" stroke-width="2.6"/>'
         for (x, y), col in zip(pts, ["yellow", "pink", "white", "green", "orange"])
     )
-    badge = f'<g transform="translate(1076,104)"><g class="bob2">{scirc(0, 0, 66, C["cyan"], sh=7)}{net}</g></g>'
+    badge = f'<g transform="translate(1074,82) scale(0.84)"><g>{scirc(0, 0, 66, C["cyan"], sh=7)}{net}</g></g>'
     sigma = (
-        f'<g transform="translate(626,62) rotate(-10)"><g class="bob3">{srect(-42, -42, 84, 84, 20, C["purple"], sh=7)}'
+        f'<g transform="translate(646,54) rotate(-10) scale(0.84)"><g>{srect(-42, -42, 84, 84, 20, C["purple"], sh=7)}'
         f'<text x="0" y="21" text-anchor="middle" font-family="{SERIF}" font-size="60" font-weight="700" fill="{INK}">∑</text></g></g>'
     )
 
-    phrase = "COMPUTER VISION ✦ DYNAMICAL SYSTEMS ✦ SCIENTIFIC COMPUTING ✦ CLEAN MODELS, MESSY DATA ✦ "
+    phrase = "COMPUTER VISION ✦ DYNAMICAL SYSTEMS ✦ SCIENTIFIC COMPUTING ✦ KEEP MOVING ON ✦ "
+    period = round(len(phrase) * 14.77)   # one repetition, so the ticker loops without a seam
     seps = [C["yellow"], C["pink"], C["cyan"], C["green"]]
     parts = phrase.split("✦")
     spans = "".join(
         f'{p.replace(" ", "&#160;")}<tspan fill="{seps[i % 4]}">✦</tspan>' for i, p in enumerate(parts[:-1])
     ) + "&#160;"
     marquee = "".join(
-        f'<text x="{i * 1300}" y="{strip_y + 41}" textLength="1300" lengthAdjust="spacing" font-family="{MONO}" '
+        f'<text x="{i * period}" y="{strip_y + 36}" textLength="{period}" lengthAdjust="spacing" font-family="{MONO}" '
         f'font-size="21" font-weight="700" fill="{T["strip"][1]}">{spans}</text>' for i in range(3)
     )
 
@@ -287,8 +284,8 @@ def hero():
         bg = f'<g transform="skewX(-18)"><rect class="slide" x="-100" y="0" width="3200" height="{ch}" fill="url(#rb)"/></g>'
         bg_defs = rainbow_gradient("rb", 1400)
     elif T["hero"] == "blobs":
-        spots = [("pink", 180, 90, 330, "d1"), ("yellow", 520, 380, 300, "d2"), ("cyan", 860, 60, 340, "d3"),
-                 ("purple", 1090, 330, 320, "d1"), ("green", 300, 400, 260, "d3"), ("orange", 700, 220, 240, "d2")]
+        spots = [("pink", 180, 60, 320, "d1"), ("yellow", 520, 290, 290, "d2"), ("cyan", 860, 40, 330, "d3"),
+                 ("purple", 1090, 250, 310, "d1"), ("green", 300, 310, 250, "d3"), ("orange", 700, 170, 230, "d2")]
         bg = f'<rect width="{cw}" height="{ch}" fill="#fff7fc"/>' + "".join(
             f'<circle class="{cls}" cx="{x}" cy="{y}" r="{r}" fill="url(#b-{c})"/>' for c, x, y, r, cls in spots)
         bg_defs = "".join(
@@ -303,23 +300,24 @@ def hero():
               f'<rect class="d2" x="-40" y="250" width="330" height="330" rx="40" fill="{C["yellow"]}" transform="rotate(-12 120 400)" {m}/>'
               f'<circle class="d3" cx="470" cy="40" r="90" fill="{C["green"]}" {m}/>')
         bg_defs = ""
+    tag_w = round(len(TAGLINE) * 11.95)
     content = f"""
   {bg}
   <rect width="{cw}" height="{ch}" fill="url(#dots)"/>
-  {star(590, 334, 22, C['white'], 11)}
-  {star(996, 46, 17, C['yellow'], 9)}
-  {star(1140, 226, 15, C['white'], 13)}
-  {flower(1104, 300, C['pink'], C['yellow'])}
-  {plus(584, 190)}{plus(1140, 30)}{plus(650, 352, 7)}
-  <path d="M890,346 l14,-12 l14,12 l14,-12 l14,12 l14,-12 l14,12" fill="none" stroke="{INK}" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  {star(548, 222, 18, C['white'], 11)}
+  {star(1004, 30, 14, C['yellow'], 9)}
+  {star(1142, 188, 14, C['white'], 13)}
+  {flower(1104, 232, C['pink'], C['yellow'])}
+  {plus(612, 150)}{plus(1150, 26, 7)}{plus(668, 250, 7)}
+  <path d="M884,256 l14,-12 l14,12 l14,-12 l14,12 l14,-12 l14,12" fill="none" stroke="{INK}" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
   {sigma}{screen}{badge}
-  {label(62, 34, "HELLO, I'M", C['white'])}
+  {label(62, 26, "HELLO, I'M", C['white'])}
   <g font-family="{SANS}" font-size="{fs:.0f}" font-weight="900" letter-spacing="{-fs * 0.012:.1f}" stroke-width="6" stroke-linejoin="round" paint-order="stroke fill">{name}</g>
-  <g class="pop">
-    {srect(62, 304, 470, 52, 26, C['yellow'], sh=6)}
-    <text x="297" y="338" text-anchor="middle" textLength="418" lengthAdjust="spacing" font-family="{SANS}" font-size="24" font-weight="700" fill="{INK}">I like clean models and messy data.</text>
+  <g>
+    {srect(62, 190, tag_w + 52, 52, 26, C['yellow'], sh=6)}
+    <text x="{88 + tag_w / 2:.0f}" y="224" text-anchor="middle" textLength="{tag_w}" lengthAdjust="spacing" font-family="{SANS}" font-size="24" font-weight="700" fill="{INK}">{TAGLINE}</text>
   </g>
-  <rect x="0" y="{strip_y}" width="{cw}" height="64" fill="{T['strip'][0]}"/>
+  <rect x="0" y="{strip_y}" width="{cw}" height="56" fill="{T['strip'][0]}"/>
   <g class="ticker">{marquee}</g>"""
     defs = f"""<clipPath id="scr"><rect x="3" y="42" width="324" height="175"/></clipPath>
   <clipPath id="raw"><rect x="3" y="0" width="330" height="220">
@@ -335,9 +333,9 @@ def hero():
     .d2 { animation: drift 23s ease-in-out -6s infinite alternate-reverse; }
     .d3 { animation: drift 19s ease-in-out -11s infinite alternate; }
     @keyframes drift { from { transform: translate(-36px, -14px); } to { transform: translate(40px, 18px); } }
-    .pop { animation: pop 3.2s ease-in-out infinite; transform-origin: 297px 330px; }
-    @keyframes pop { 0%, 100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1deg); } }"""
-    return tile(W, H, C["pink"], f"{NAME}. I like clean models and messy data. Computer vision, dynamical systems, scientific computing.",
+"""
+    css = css.replace("-1300px", f"-{period}px")
+    return tile(W, H, C["pink"], f"{NAME}. {TAGLINE} Computer vision, dynamical systems, scientific computing.",
                 content, defs, css, dots=False)
 
 
@@ -392,7 +390,7 @@ def now():
 
 # ---------------------------------------------------------- figure: ReadScreen
 def fig_readscreen():
-    W, H = 600, 470
+    W, H = 600, 352
     sx, sy, sw, sh = 38, 30, 500, 220
     body_y = sy + 38
     col = dict(kw="#7c3aed", fn="#db2777", ink=INK, cm="#7a7390")
@@ -412,7 +410,7 @@ def fig_readscreen():
     sweep = 'keyTimes="0;0.1;0.6;1" dur="7s" repeatCount="indefinite"'
     x0, x1 = sx, sx + sw
     content = f"""
-  {star(548, 290, 14, C['yellow'], 10)}
+  {star(552, 16, 11, C['yellow'], 10)}
   {srect(sx, sy, sw, sh, 18, C['white'], sh=8)}
   <path d="M{sx + 1.5},{body_y} V{sy + 18} a16.5,16.5 0 0 1 16.5,-16.5 H{sx + sw - 18} a16.5,16.5 0 0 1 16.5,16.5 V{body_y} Z" fill="{C['yellow']}"/>
   <path d="M{sx},{body_y} H{sx + sw}" stroke="{LINE}" stroke-width="3"/>
@@ -435,14 +433,13 @@ def fig_readscreen():
   </g>
   <g font-family="{MONO}" font-size="14.5" font-weight="700" fill="{INK}">
     <text x="{sx + 2}" y="293">readability</text>
+    <text x="{sx + sw}" y="293" text-anchor="end">judged by OCR</text>
     {srect(sx + 116, 278, 240, 18, 9, C['white'], sh=3, sw=2.5)}
     <rect x="{sx + 119}" y="281" width="96" height="12" rx="6" fill="{C['green']}">
       <animate attributeName="width" values="96;96;228;228" {sweep}/>
     </rect>
   </g>
-  <text x="{sx}" y="356" font-family="{SANS}" font-size="33" font-weight="900" fill="{INK}">ReadScreen</text>
-  <text x="{sx}" y="388" font-family="{SANS}" font-size="19.5" font-weight="600" fill="{INK}">Teaching models to read text through moiré.</text>
-  <text x="{sx}" y="418" font-family="{MONO}" font-size="14.5" font-weight="700" fill="{INK}" fill-opacity="0.75">PyTorch · OpenCV · ESDNet · DBNet · Tesseract</text>"""
+"""
     defs = f"""<clipPath id="body"><rect x="{sx + 1.5}" y="{body_y + 1.5}" width="{sw - 3}" height="{sh - 41}"/></clipPath>
   <clipPath id="raw"><rect x="{x0}" y="{sy}" width="{sw}" height="{sh}">
     <animate attributeName="x" values="{x0};{x0};{x1};{x1}" {sweep}/>
@@ -456,7 +453,7 @@ def sub(base, s, size=13):
 
 
 def fig_grid():
-    W, H = 600, 470
+    W, H = 600, 352
     cx, cy, R, N = 288, 138, 100, 12
     pts = [
         (cx + R * math.cos(2 * math.pi * i / N - math.pi / 2),
@@ -500,9 +497,7 @@ def fig_grid():
   {nodes}
   {srect(66, 268, 444, 46, 23, C['white'], sh=5)}
   <text x="{cx}" y="298" text-anchor="middle" font-family="{SERIF}" font-style="italic" font-weight="600" font-size="20" fill="{INK}">{eq}</text>
-  <text x="38" y="356" font-family="{SANS}" font-size="33" font-weight="900" fill="{INK}">Grid stability</text>
-  <text x="38" y="388" font-family="{SANS}" font-size="19.5" font-weight="600" fill="{INK}">When does a power grid fall out of step?</text>
-  <text x="38" y="418" font-family="{MONO}" font-size="14.5" font-weight="700" fill="{INK}" fill-opacity="0.75">NumPy · SciPy · NetworkX · pandas</text>"""
+"""
     css = """
     .flow { animation: flow 2.4s linear infinite; }
     @keyframes flow { to { stroke-dashoffset: -24; } }"""
