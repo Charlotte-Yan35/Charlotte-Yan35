@@ -58,7 +58,7 @@ THEMES = {
     ),
 }
 
-TAGLINE = "Life is constantly moving on."   # the yellow sticker under the name
+TAGLINE = "Life is going on"   # the yellow sticker under the name
 
 INK = LINE = ""
 C, T = {}, {}
@@ -268,7 +268,7 @@ def hero():
         f'<text x="0" y="21" text-anchor="middle" font-family="{SERIF}" font-size="60" font-weight="700" fill="{INK}">∑</text></g></g>'
     )
 
-    phrase = "COMPUTER VISION ✦ DYNAMICAL SYSTEMS ✦ SCIENTIFIC COMPUTING ✦ KEEP MOVING ON ✦ "
+    phrase = "COMPUTER VISION ✦ DYNAMICAL SYSTEMS ✦ SCIENTIFIC COMPUTING ✦ LIFE IS GOING ON ✦ "
     period = round(len(phrase) * 14.77)   # one repetition, so the ticker loops without a seam
     seps = [C["yellow"], C["pink"], C["cyan"], C["green"]]
     parts = phrase.split("✦")
@@ -335,7 +335,7 @@ def hero():
     @keyframes drift { from { transform: translate(-36px, -14px); } to { transform: translate(40px, 18px); } }
 """
     css = css.replace("-1300px", f"-{period}px")
-    return tile(W, H, C["pink"], f"{NAME}. {TAGLINE} Computer vision, dynamical systems, scientific computing.",
+    return tile(W, H, C["pink"], f"{NAME}. {TAGLINE.rstrip('.')}. Computer vision, dynamical systems, scientific computing.",
                 content, defs, css, dots=False)
 
 

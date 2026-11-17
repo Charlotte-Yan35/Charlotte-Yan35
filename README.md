@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/hero.svg" width="100%" alt="Yiwen Yan. Life is constantly moving on. Computer vision, dynamical systems, scientific computing.">
+  <img src="assets/hero.svg" width="100%" alt="Yiwen Yan. Life is going on. Computer vision, dynamical systems, scientific computing.">
 </p>
 
 ### 👋 About me
