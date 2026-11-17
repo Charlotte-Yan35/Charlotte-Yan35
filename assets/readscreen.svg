@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 470" width="600" height="470" role="img" aria-label="ReadScreen: teaching models to read text through moire. A scan line sweeps across a striped screen and leaves readable code behind. PyTorch, OpenCV, ESDNet, DBNet, Tesseract.">
+<defs>
+  <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.7" fill="#6a4fd8" fill-opacity="0.0"/></pattern><filter id="soft" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#9b7bff" flood-opacity="0.38"/></filter>
+  <clipPath id="card"><rect width="576" height="446" rx="24"/></clipPath>
+  <clipPath id="body"><rect x="39.5" y="69.5" width="497" height="179"/></clipPath>
+  <clipPath id="raw"><rect x="38" y="30" width="500" height="220">
+    <animate attributeName="x" values="38;38;538;538" keyTimes="0;0.1;0.6;1" dur="7s" repeatCount="indefinite"/>
+  </rect></clipPath><linearGradient id="tg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe6f3"/><stop offset="1" stop-color="#ffc2e0"/></linearGradient>
+  <style>
+  .bob  { animation: bob 4.2s ease-in-out infinite; }
+  .bob2 { animation: bob 5.1s ease-in-out -1.7s infinite; }
+  .bob3 { animation: bob 3.6s ease-in-out -0.9s infinite; }
+  @keyframes bob { 0%, 100% { transform: translateY(-5px); } 50% { transform: translateY(6px); } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+</defs>
+<rect x="8" y="8" width="576" height="446" rx="24" fill="#fff" filter="url(#soft)"/>
+<g transform="translate(8,8)">
+  <g clip-path="url(#card)">
+    <rect width="576" height="446" fill="url(#tg)"/>
+    <rect width="576" height="446" fill="url(#dots)"/>
+    
+  <g transform="translate(548,290)"><g class=""><g><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="10s" repeatCount="indefinite"/><path d="M0,-14 Q2.8000000000000003,-2.8000000000000003 14,0 Q2.8000000000000003,2.8000000000000003 0,14 Q-2.8000000000000003,2.8000000000000003 -14,0 Q-2.8000000000000003,-2.8000000000000003 0,-14 Z" fill="#ffe979" stroke="#ffffff" stroke-width="2.6" stroke-linejoin="round"/></g></g></g>
+  <rect x="38" y="30" width="500" height="220" rx="18" fill="#ffffff" stroke="#ffffff" stroke-width="3" filter="url(#soft)"/>
+  <path d="M39.5,68 V48 a16.5,16.5 0 0 1 16.5,-16.5 H520 a16.5,16.5 0 0 1 16.5,16.5 V68 Z" fill="#ffe979"/>
+  <path d="M38,68 H538" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="62" cy="50" r="6.5" fill="#ff9fd0" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="84" cy="50" r="6.5" fill="#8fe8b8" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="106" cy="50" r="6.5" fill="#8fd9ff" stroke="#ffffff" stroke-width="2"/>
+  <text x="288.0" y="55" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="13.5" font-weight="700" fill="#6a4fd8">photo_of_my_screen.jpg</text>
+  <text x="66" y="112" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="19" font-weight="600"><tspan fill="#7c3aed">def&#160;</tspan><tspan fill="#db2777">read</tspan><tspan fill="#6a4fd8">(photo):</tspan></text><text x="110" y="150" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="19" font-weight="600"><tspan fill="#6a4fd8">clean&#160;=&#160;</tspan><tspan fill="#db2777">demoire</tspan><tspan fill="#6a4fd8">(photo)</tspan></text><text x="110" y="188" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="19" font-weight="600"><tspan fill="#6a4fd8">text&#160;&#160;=&#160;</tspan><tspan fill="#db2777">ocr</tspan><tspan fill="#6a4fd8">(clean)</tspan></text><text x="110" y="226" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="19" font-weight="600"><tspan fill="#7c3aed">return&#160;</tspan><tspan fill="#6a4fd8">text</tspan><tspan fill="#7a7390">&#160;&#160;#&#160;not&#160;"t3xt"</tspan></text>
+  <g clip-path="url(#body)">
+    <g clip-path="url(#raw)"><g style="mix-blend-mode:multiply" opacity="0.62">
+      <animate attributeName="opacity" values="0;0.62;0.62;0.62" keyTimes="0;0.08;0.6;1" dur="7s" repeatCount="indefinite"/>
+      <g fill="none" stroke="#ff9fd0" stroke-width="6.4"><circle cx="700" cy="-120" r="13.0"/><circle cx="700" cy="-120" r="26.0"/><circle cx="700" cy="-120" r="39.0"/><circle cx="700" cy="-120" r="52.0"/><circle cx="700" cy="-120" r="65.0"/><circle cx="700" cy="-120" r="78.0"/><circle cx="700" cy="-120" r="91.0"/><circle cx="700" cy="-120" r="104.0"/><circle cx="700" cy="-120" r="117.0"/><circle cx="700" cy="-120" r="130.0"/><circle cx="700" cy="-120" r="143.0"/><circle cx="700" cy="-120" r="156.0"/><circle cx="700" cy="-120" r="169.0"/><circle cx="700" cy="-120" r="182.0"/><circle cx="700" cy="-120" r="195.0"/><circle cx="700" cy="-120" r="208.0"/><circle cx="700" cy="-120" r="221.0"/><circle cx="700" cy="-120" r="234.0"/><circle cx="700" cy="-120" r="247.0"/><circle cx="700" cy="-120" r="260.0"/><circle cx="700" cy="-120" r="273.0"/><circle cx="700" cy="-120" r="286.0"/><circle cx="700" cy="-120" r="299.0"/><circle cx="700" cy="-120" r="312.0"/><circle cx="700" cy="-120" r="325.0"/><circle cx="700" cy="-120" r="338.0"/><circle cx="700" cy="-120" r="351.0"/><circle cx="700" cy="-120" r="364.0"/><circle cx="700" cy="-120" r="377.0"/><circle cx="700" cy="-120" r="390.0"/><circle cx="700" cy="-120" r="403.0"/><circle cx="700" cy="-120" r="416.0"/><circle cx="700" cy="-120" r="429.0"/><circle cx="700" cy="-120" r="442.0"/><circle cx="700" cy="-120" r="455.0"/><circle cx="700" cy="-120" r="468.0"/><circle cx="700" cy="-120" r="481.0"/><circle cx="700" cy="-120" r="494.0"/><circle cx="700" cy="-120" r="507.0"/><circle cx="700" cy="-120" r="520.0"/><circle cx="700" cy="-120" r="533.0"/><circle cx="700" cy="-120" r="546.0"/><circle cx="700" cy="-120" r="559.0"/><circle cx="700" cy="-120" r="572.0"/><circle cx="700" cy="-120" r="585.0"/><circle cx="700" cy="-120" r="598.0"/><circle cx="700" cy="-120" r="611.0"/><circle cx="700" cy="-120" r="624.0"/><circle cx="700" cy="-120" r="637.0"/><circle cx="700" cy="-120" r="650.0"/><circle cx="700" cy="-120" r="663.0"/><circle cx="700" cy="-120" r="676.0"/><circle cx="700" cy="-120" r="689.0"/><circle cx="700" cy="-120" r="702.0"/><circle cx="700" cy="-120" r="715.0"/><circle cx="700" cy="-120" r="728.0"/><circle cx="700" cy="-120" r="741.0"/><circle cx="700" cy="-120" r="754.0"/><circle cx="700" cy="-120" r="767.0"/><circle cx="700" cy="-120" r="780.0"/><circle cx="700" cy="-120" r="793.0"/><circle cx="700" cy="-120" r="806.0"/><circle cx="700" cy="-120" r="819.0"/><circle cx="700" cy="-120" r="832.0"/><circle cx="700" cy="-120" r="845.0"/><circle cx="700" cy="-120" r="858.0"/></g>
+      <g fill="none" stroke="#8fe8b8" stroke-width="6.4"><circle cx="682" cy="-96" r="13.9"/><circle cx="682" cy="-96" r="27.8"/><circle cx="682" cy="-96" r="41.7"/><circle cx="682" cy="-96" r="55.6"/><circle cx="682" cy="-96" r="69.5"/><circle cx="682" cy="-96" r="83.4"/><circle cx="682" cy="-96" r="97.3"/><circle cx="682" cy="-96" r="111.2"/><circle cx="682" cy="-96" r="125.1"/><circle cx="682" cy="-96" r="139.0"/><circle cx="682" cy="-96" r="152.9"/><circle cx="682" cy="-96" r="166.8"/><circle cx="682" cy="-96" r="180.7"/><circle cx="682" cy="-96" r="194.6"/><circle cx="682" cy="-96" r="208.5"/><circle cx="682" cy="-96" r="222.4"/><circle cx="682" cy="-96" r="236.3"/><circle cx="682" cy="-96" r="250.2"/><circle cx="682" cy="-96" r="264.1"/><circle cx="682" cy="-96" r="278.0"/><circle cx="682" cy="-96" r="291.9"/><circle cx="682" cy="-96" r="305.8"/><circle cx="682" cy="-96" r="319.7"/><circle cx="682" cy="-96" r="333.6"/><circle cx="682" cy="-96" r="347.5"/><circle cx="682" cy="-96" r="361.4"/><circle cx="682" cy="-96" r="375.3"/><circle cx="682" cy="-96" r="389.2"/><circle cx="682" cy="-96" r="403.1"/><circle cx="682" cy="-96" r="417.0"/><circle cx="682" cy="-96" r="430.9"/><circle cx="682" cy="-96" r="444.8"/><circle cx="682" cy="-96" r="458.7"/><circle cx="682" cy="-96" r="472.6"/><circle cx="682" cy="-96" r="486.5"/><circle cx="682" cy="-96" r="500.4"/><circle cx="682" cy="-96" r="514.3"/><circle cx="682" cy="-96" r="528.2"/><circle cx="682" cy="-96" r="542.1"/><circle cx="682" cy="-96" r="556.0"/><circle cx="682" cy="-96" r="569.9"/><circle cx="682" cy="-96" r="583.8"/><circle cx="682" cy="-96" r="597.7"/><circle cx="682" cy="-96" r="611.6"/><circle cx="682" cy="-96" r="625.5"/><circle cx="682" cy="-96" r="639.4"/><circle cx="682" cy="-96" r="653.3"/><circle cx="682" cy="-96" r="667.2"/><circle cx="682" cy="-96" r="681.1"/><circle cx="682" cy="-96" r="695.0"/><circle cx="682" cy="-96" r="708.9"/><circle cx="682" cy="-96" r="722.8"/><circle cx="682" cy="-96" r="736.7"/><circle cx="682" cy="-96" r="750.6"/><circle cx="682" cy="-96" r="764.5"/><circle cx="682" cy="-96" r="778.4"/><circle cx="682" cy="-96" r="792.3"/><circle cx="682" cy="-96" r="806.2"/><circle cx="682" cy="-96" r="820.1"/><circle cx="682" cy="-96" r="834.0"/><circle cx="682" cy="-96" r="847.9"/><circle cx="682" cy="-96" r="861.8"/></g>
+    </g></g>
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0,0;0,0;500,0;500,0" keyTimes="0;0.1;0.6;1" dur="7s" repeatCount="indefinite"/>
+      <rect x="22" y="68" width="26" height="182" fill="#ffe979" opacity="0.8"/>
+      <rect x="36" y="68" width="4.5" height="182" fill="#6a4fd8"/>
+    </g>
+  </g>
+  <g font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="14.5" font-weight="700" fill="#6a4fd8">
+    <text x="40" y="293">readability</text>
+    <rect x="154" y="278" width="240" height="18" rx="9" fill="#ffffff" stroke="#ffffff" stroke-width="2.5" filter="url(#soft)"/>
+    <rect x="157" y="281" width="96" height="12" rx="6" fill="#8fe8b8">
+      <animate attributeName="width" values="96;96;228;228" keyTimes="0;0.1;0.6;1" dur="7s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  <text x="38" y="356" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="33" font-weight="900" fill="#6a4fd8">ReadScreen</text>
+  <text x="38" y="388" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="19.5" font-weight="600" fill="#6a4fd8">Teaching models to read text through moiré.</text>
+  <text x="38" y="418" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="14.5" font-weight="700" fill="#6a4fd8" fill-opacity="0.75">PyTorch · OpenCV · ESDNet · DBNet · Tesseract</text>
+  </g>
+  <rect x="1.5" y="1.5" width="573" height="443" rx="22.5" fill="none" stroke="#ffffff" stroke-width="3"/>
+</g>
+</svg>
